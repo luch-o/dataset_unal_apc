@@ -145,3 +145,4 @@ gifs_compressed/
 color_distributions/
 fig/
 logs/
+logging_config.py
