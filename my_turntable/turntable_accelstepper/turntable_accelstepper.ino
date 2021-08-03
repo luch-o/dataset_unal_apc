@@ -19,7 +19,7 @@ const float STEP_SIZE = 0.1125;  // 1/16 microstep
 #define motorInterfaceType 1
 
 // Define variables to control steps via serial
-int steps;
+long steps;
 float angle;
 bool moving = false;
 
@@ -37,8 +37,8 @@ void setup() {
   Serial.begin(9600);
 }
 
-int angle2steps(int angle) {
-  return floor(angle/STEP_SIZE); 
+float steps2angle(int steps) {
+  return steps * STEP_SIZE; 
 }
 
 void loop() {
@@ -49,25 +49,23 @@ void loop() {
   
   // if a command is sent via serial and turntable is in the desired position
   if (Serial.available()) {    
-    // read angle from serial
-    angle = Serial.parseInt();
+    // read steps from serial
+    steps = Serial.parseInt();
     
-    // angle 0 means query current position
-    if (angle == 0) {
+    // steps 0 means query current position
+    if (steps == 0) {
       Serial.print("Current position: ");
       Serial.println(turntable.currentPosition() * STEP_SIZE);
     } 
     // otherwise move motor by angle degrees from current position
     else {
       moving = true;
-      steps = angle2steps(angle);
+      angle = steps2angle(steps);
       
-      Serial.print("angle: ");
-      Serial.println(angle);
       Serial.print("Steps: ");
       Serial.println(steps);
-      Serial.print("Actual angle: ");
-      Serial.println(steps * STEP_SIZE);
+      Serial.print("Angle: ");
+      Serial.println(angle);
       
       turntable.move(steps);
     }
