@@ -62,7 +62,7 @@ A sample image set:
 - Notebook used to explore poit cloud segmentation with RANSAC plane detection and DBSCAN clustering at `pcd_segmentation.ipynb`
 - Notebook used to explore spatial segmentation at `pcd_segmentation_geometry.ipynb`
 - JSON file storing cylinder parameters used for spatial segmentation at `cylinders.json`
-- Utility functions to deal with Open3D point clouds, including loading cylinders as volume of interest for spatial segmentation at `pcs_utils.py`
+- Utility functions to deal with Open3D point clouds, including loading cylinders as volume of interest for spatial segmentation at `pcd_utils.py`
 - Logging configuration at `logging_config.py`
 - Script used to obtain binary masks for all images at `segmentation.py`
 - Notebook used to explore and try the morphological filter at `mask_postproc.ipynb`
