@@ -140,6 +140,7 @@ cython_debug/
 # other folders we don't intend to keep
 .vscode
 img/
+img.zip
 gifs/
 gifs_compressed/
 color_distributions/
